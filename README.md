@@ -5,4 +5,5 @@ By combining the power of USDC and blockchain technology, RVPay ensures a smooth
 
 The use of NFTs ensures that each rental is uniquely tied to the user, offering both ownership and proof of access to their rented RV.
 
-Built on # based-latam-2024: https://based-latam.devfolio.co/overview
+Built on # based-latam-2024: https://based-latam.devfolio.co/overview 
+
