@@ -91,3 +91,26 @@ contract RVRental is ERC721 {
     }
 
     
+// Function to get all the available RVs
+    function getAvailableRVs() public view returns (RV[] memory) {
+        // Create an array to store available RVs
+        RV[] memory availableRVs = new RV[](numberOfRVs);
+        uint256 availableCount = 0;
+
+        // Iterate through the RVMap and populate the array with available RVs
+        for (uint256 i = 1; i <= numberOfRVs; i++) {
+            if (rvMap[i].isAvailable) {
+                availableRVs[availableCount] = rvMap[i];
+                availableCount++;
+            }
+        }
+
+        // Resize the array to match the actual number of available RVs
+        RV[] memory resizedAvailableRVs = new RV[](availableCount);
+        for (uint256 i = 0; i < availableCount; i++) {
+            resizedAvailableRVs[i] = availableRVs[i];
+        }
+
+        return resizedAvailableRVs;
+    }
+}
