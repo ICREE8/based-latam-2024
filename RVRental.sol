@@ -113,4 +113,27 @@ contract RVRental is ERC721 {
 
         return resizedAvailableRVs;
     }
+
+    // Function to get rental duration
+ struct RentalTimestamp {
+        uint256 start;
+        uint256 end;
+    }
+
+    // Mapping to track rental timestamps
+    mapping(uint256 => RentalTimestamp) private _rentalTimestamps;
+
+    // Function to get rental duration
+    function getRentalDuration(uint256 _rvId) public view returns (uint256) {
+        RentalTimestamp storage rentalTimestamp = _rentalTimestamps[_rvId];
+
+        if (rentalTimestamp.end == 0) {
+            // RV is still rented
+            return block.timestamp - rentalTimestamp.start;
+        } else {
+            // RV rental has ended
+            return rentalTimestamp.end - rentalTimestamp.start;
+        }
+    }
+}
 }
